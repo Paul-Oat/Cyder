@@ -42,11 +42,13 @@ def main():
         start_service(services[22].strip(), 22, '0.0.0.0', start_ssh_server)
         del services[22]
 
-    #  Telnet Server (Twisted)
     if config.getboolean('HOST', 'telnet', fallback=False):
         print('Telnet Enabled')
-        start_service(services[23], 23, '0.0.0.0', start_telnet_server)
-        del services[23]
+        if 23 in services:
+            start_service(services[23], 23, '0.0.0.0', start_telnet_server)
+            del services[23]
+        else:
+            print('Telnet port (23) not found in services dictionary.')
 
     #  HTTP Server (Waitress)
     if config.getboolean('HOST', 'http', fallback=False):
