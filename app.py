@@ -44,12 +44,9 @@ def main():
 
     if config.getboolean('HOST', 'telnet', fallback=False):
         print('Telnet Enabled')
-        if 23 in services:
-            start_service(services[23], 23, '0.0.0.0', start_telnet_server)
-            del services[23]
-        else:
-            print('Telnet port (23) not found in services dictionary.')
-
+        start_service(services[23], 23, '0.0.0.0', start_telnet_server)
+        del services[23]
+        
     #  HTTP Server (Waitress)
     if config.getboolean('HOST', 'http', fallback=False):
         print('HTTP Enabled')
