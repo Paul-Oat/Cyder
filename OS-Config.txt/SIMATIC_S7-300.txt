@@ -2,7 +2,7 @@
 ip = 192.168.0.1
 mac_address = 00:01:E3:BD:E6:04
 http = true
-ssh = true
+ssh = false
 telnet = true
 file_system = ./configuration/fs/default_fs.json
 
@@ -20,7 +20,9 @@ fingerprint = SEQ(SP=F9-10D%GCD=1-6%ISR=106-110%TI=I%CI=I%II=I%SS=S%TS=U)
     U1(DF=N%T=73-7D%TG=80%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=1B88%RUD=G)
     IE(DFI=N%T=73-7D%TG=80%CD=Z)
 
-22 = 
+
 80 = HTTP/1\.0 302\r\nLocation: /Portal0000\.htm\r\n.*<HTML><HEAD><TITLE>Error</TITLE></HEAD>\r\n<BODY><CENTER><H2>/<BR><BR>302 : MOVED TEMPORARILY</H2></CENTER></BODY></HTML>$|s p/Siemens Simatic S7-300 PLC httpd/ d/specialized/
 23 = |^\xff\xfb\x01\xff\xfb\x03\n\r\0\*\*\* Siemens (\w+) \*\*\*\n\r\0\r\0\nSerial Number (\d+)  MAC address ([0-9A-F]{12})\n\r\0Software version ([^\r]+)\r\0\nPassword :| p/Siemens $1 remote management telnetd/ v/$4/ i/serial $2; MAC $3/ d/remote management/
 10001 = siemens-logo m|^\x06\x03\x04\0\0\x002| p/Siemens LOGO! PLC/ d/specialized/
+102 = 
+502 = 

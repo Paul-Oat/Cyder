@@ -16,8 +16,10 @@ class LocalFlask(Flask):
     """
 
     def __init__(self, import_name, banner=None):
+
         if banner:
             self.banner = banner
+            banner = self.banner.replace('\n', '').replace('\r', '')
         else:
             self.banner = 'Cisco IOS http config 7.0 (IOS 15.0)'
         super().__init__(import_name)
@@ -69,7 +71,7 @@ def require_auth():
 
 @app.route('/')
 def hello_world():
-    return "<h1>I Can't Believe You Actually Found The Login Credentials!</h1>"
+    return "<h1>I Can't Believe You Actually Found The Login Credentials!</h1>"#TODO file injection ?? 
 
 
 def start_http_server(host, port=80, banner=None):
